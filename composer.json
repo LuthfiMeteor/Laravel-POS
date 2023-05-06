@@ -9,7 +9,9 @@
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.6"
+        "laravel/tinker": "^2.6",
+        "yajra/laravel-datatables-buttons": "^9.0",
+        "yajra/laravel-datatables-oracle": "^10.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",

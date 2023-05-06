@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InfoUserController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ResetController;
-use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\ResetController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\InfoUserController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +31,17 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('dashboard');
 
-	Route::get('produk', function () {
-		return view('billing');
-	})->name('produk');
+	Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
+	Route::post('/produk/delete-selected', [ProdukController::class, 'deleteSelected'])->name('produk.delete_selected');
+	Route::post('/produk/cetak-barcode', [ProdukController::class, 'cetakBarcode'])->name('produk.cetak_barcode');
+	Route::resource('/produk', ProdukController::class);
 
-	Route::get('kategori', function () {
-		return view('kategori');
-	})->name('kategori');
+	// KATEGORI
+	Route::get('kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
+	route::get('edit-kategori/{id}', [KategoriController::class, 'edit']);
+	Route::put('edit-kategori/proses/{id}', [KategoriController::class, 'update']);
+	route::resource('/kategori', KategoriController::class);
+
 
 	Route::get('member', function () {
 		return view('member');
