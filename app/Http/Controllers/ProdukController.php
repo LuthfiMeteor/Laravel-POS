@@ -27,7 +27,7 @@ class ProdukController extends Controller
             ->select('produk.*', 'nama_kategori')
             ->orderBy('kode_produk', 'asc')
             ->get();
-        
+
         return datatables()
             ->of($produk)
             ->addIndexColumn()
@@ -37,7 +37,7 @@ class ProdukController extends Controller
                 ';
             })
             ->addColumn('kode_produk', function ($produk) {
-                return '<span class="label label-success">' . $produk->kode_produk . '</span>';
+                return '<span class="">' . $produk->kode_produk . '</span>';
             })
             ->addColumn('harga_beli', function ($produk) {
                 return format_uang($produk->harga_beli);
@@ -147,5 +147,18 @@ class ProdukController extends Controller
         }
 
         return response(null, 204);
+    }
+    public function cetakBarcode(Request $request)
+    {
+        $dataproduk = array();
+        foreach ($request->id_produk as $id) {
+            $produk = Produk::find($id);
+            $dataproduk[] = $produk;
+        }
+
+        $no  = 1;
+        $pdf = PDF::loadView('produk.barcode', compact('dataproduk', 'no'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('produk.pdf');
     }
 }
