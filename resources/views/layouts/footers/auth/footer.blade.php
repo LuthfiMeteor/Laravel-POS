@@ -6,26 +6,25 @@
                     © <script>
                         document.write(new Date().getFullYear())
                     </script>, made with <i class="fa fa-heart"></i> by
-                    <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>&amp; <a style="color: #252f40;" href="https://www.updivision.com" class="font-weight-bold ml-1" target="_blank">UPDIVISION</a>
-                    for a better web.
+                    <a href="https://github.com/LuthfiMeteor" class="font-weight-bold" target="_blank">Luthfi Novalino Pratama</a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                        <a href="https://github.com/LuthfiMeteor" class="nav-link text-muted" target="_blank">Me?</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://www.updivision.com" class="nav-link text-muted" target="_blank">UPDIVISION</a>
+                        <a href="https://wa.me/+62895703157598" class="nav-link text-muted" target="_blank">Whastapp</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                        <a href="https://www.facebook.com/jajang.asi.7" class="nav-link text-muted" target="_blank">Facebook</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                        <a href="https://www.instagram.com/lthf.vite/" class="nav-link text-muted" target="_blank">Instagram</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                        <a href="https://github.com/LuthfiMeteor" class="nav-link pe-0 text-muted" target="_blank">Github</a>
                     </li>
                 </ul>
             </div>
