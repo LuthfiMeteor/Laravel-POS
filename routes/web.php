@@ -29,37 +29,47 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('dashboard');
 
-	Route::get('billing', function () {
+	Route::get('produk', function () {
 		return view('billing');
-	})->name('billing');
+	})->name('produk');
 
-	Route::get('profile', function () {
-		return view('profile');
-	})->name('profile');
+	Route::get('kategori', function () {
+		return view('kategori');
+	})->name('kategori');
 
-	Route::get('rtl', function () {
-		return view('rtl');
-	})->name('rtl');
+	Route::get('member', function () {
+		return view('member');
+	})->name('member');
 
 	Route::get('user-management', function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
 
-	Route::get('tables', function () {
-		return view('tables');
-	})->name('tables');
+	Route::get('supplier', function () {
+		return view('supplier');
+	})->name('supplier');
 
-    Route::get('virtual-reality', function () {
-		return view('virtual-reality');
-	})->name('virtual-reality');
+    Route::get('pengeluaran', function () {
+		return view('pengeluaran');
+	})->name('pengeluaran');
 
-    Route::get('static-sign-in', function () {
-		return view('static-sign-in');
-	})->name('sign-in');
+    Route::get('pembelian', function () {
+		return view('pembelian');
+	})->name('pembelian');
 
-    Route::get('static-sign-up', function () {
-		return view('static-sign-up');
-	})->name('sign-up');
+    Route::get('penjualan', function () {
+		return view('penjualan');
+	})->name('penjualan');
+	Route::get('transaksi-aktif', function () {
+		return view('transaksi-aktif');
+	})->name('transaksi-aktif');
+	Route::get('transaksi-baru', function () {
+		return view('transaksi-baru');
+	})->name('transaksi-baru');
+
+	Route::get('laporan', function () {
+		return view('laporan');
+	})->name('laporan');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
