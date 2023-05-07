@@ -110,7 +110,7 @@
     function deleteData(url) {
         if (confirm('Yakin ingin menghapus data terpilih?')) {
             $.post(url, {
-                    '_token': $('[name=csrf-token]').attr('content'),
+                    "_token": "{{ csrf_token() }}",
                     '_method': 'delete'
                 })
                 .done((response) => {

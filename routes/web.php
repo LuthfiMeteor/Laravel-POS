@@ -5,13 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\ResetController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('supplier', function () {
 		return view('supplier');
 	})->name('supplier');
+
+	Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+	Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
+	Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 
 	Route::get('pengeluaran', function () {
 		return view('pengeluaran');

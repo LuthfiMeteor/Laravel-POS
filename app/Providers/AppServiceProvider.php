@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('layouts.navbars.auth.sidebar', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+        view()->composer('layouts.navbar.guest', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+        view()->composer('layouts.user_type', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+        view()->composer('layouts.app', function ($view) {
+            $view->with('setting', Setting::first());
+        });
     }
 
     /**
