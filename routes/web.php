@@ -12,6 +12,7 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ChangePasswordController;
 
 /*
@@ -53,9 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
 
-	Route::get('supplier', function () {
-		return view('supplier');
-	})->name('supplier');
+	Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
+	Route::resource('/supplier', SupplierController::class);
 
 	Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
 	Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');

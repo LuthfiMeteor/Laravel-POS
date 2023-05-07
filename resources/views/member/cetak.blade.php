@@ -47,6 +47,7 @@
             margin-top: 120pt;
             right: 16pt;
             color: #fff;
+            z-index: 3;
         }
         .barcode {
             position: absolute;
@@ -75,7 +76,7 @@
                     @foreach ($data as $item)
                         <td class="text-center">
                             <div class="box">
-                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="50%">
+                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="100%">
                                 <div class="logo">
                                     <p>{{ $setting->nama_perusahaan }}</p>
                                     <img src="{{ public_path($setting->path_logo) }}" alt="logo">
