@@ -20,7 +20,7 @@ class PengeluaranController extends Controller
             ->of($pengeluaran)
             ->addIndexColumn()
             ->addColumn('created_at', function ($pengeluaran) {
-                return tanggal_indonesia($pengeluaran->created_at, false);
+                return tanggal_indonesia($pengeluaran->created_at, true);
             })
             ->addColumn('nominal', function ($pengeluaran) {
                 return format_uang($pengeluaran->nominal);

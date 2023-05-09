@@ -13,8 +13,10 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\PembeliandetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +30,8 @@ use App\Http\Controllers\ChangePasswordController;
 */
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware(['auth', 'admin'])->group(function () {
 
-	Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
 
 	Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
 	Route::post('/produk/delete-selected', [ProdukController::class, 'deleteSelected'])->name('produk.delete_selected');
@@ -66,31 +64,51 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/pengeluaran', PengeluaranController::class);
 
 
-	Route::get('pembelian', function () {
-		return view('pembelian');
-	})->name('pembelian');
+	Route::get('laporan', function () {
+		return view('laporan');
+	})->name('laporan');
+
+	Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
+	Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])->name('pembelian.create');
+	Route::resource('/pembelian', PembelianController::class)
+		->except('create');
+
+	Route::get('/pembelian_detail/{id}/data', [PembeliandetailController::class, 'data'])->name('pembelian_detail.data');
+	Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembeliandetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
+	Route::resource('/pembelian_detail', PembeliandetailController::class)
+		->except('create', 'show', 'edit');
 
 	Route::get('penjualan', function () {
 		return view('penjualan');
 	})->name('penjualan');
+});
+
+Route::middleware(['auth'])->group(function () {
+	Route::get('/', [HomeController::class, 'home']);
+	Route::get('dashboard', function () {
+		return view('dashboard');
+	})->name('dashboard');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+
 	Route::get('transaksi-aktif', function () {
 		return view('transaksi-aktif');
 	})->name('transaksi-aktif');
 	Route::get('transaksi-baru', function () {
 		return view('transaksi-baru');
 	})->name('transaksi-baru');
-
-	Route::get('laporan', function () {
-		return view('laporan');
-	})->name('laporan');
-
-	Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
-	Route::post('/user-profile', [InfoUserController::class, 'store']);
-	Route::get('/login', function () {
-		return view('dashboard');
-	})->name('sign-up');
 });
+
+
+
+Route::get('/logout', [SessionsController::class, 'destroy']);
+Route::get('/user-profile', [InfoUserController::class, 'create']);
+Route::post('/user-profile', [InfoUserController::class, 'store']);
+Route::get('/login', function () {
+	return view('dashboard');
+})->name('sign-up');
+
 
 
 

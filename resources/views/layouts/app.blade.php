@@ -14,7 +14,9 @@
     @if (env('IS_DEMO'))
         <x-demo-metas></x-demo-metas>
     @endif
-
+    <style>
+        @stack('css');
+    </style>
     
     <link rel="apple-touch-icon" href="{{{ url($setting->path_logo) }}}" type="image/png">
     <link rel="icon" href="{{{ url($setting->path_logo) }}}" type="image/png">
