@@ -13,6 +13,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ChangePasswordController;
 
 /*
@@ -61,9 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
 	Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 
-	Route::get('pengeluaran', function () {
-		return view('pengeluaran');
-	})->name('pengeluaran');
+	Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
+	Route::resource('/pengeluaran', PengeluaranController::class);
+
 
 	Route::get('pembelian', function () {
 		return view('pembelian');
