@@ -244,7 +244,7 @@
         }
     }
 
-    function loadForm(diskon = 0) {
+    function loadForm(diskon = 0) { 
         $('#total').val($('.total').text());
         $('#total_item').val($('.total_item').text());
 
