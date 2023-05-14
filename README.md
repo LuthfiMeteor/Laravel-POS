@@ -39,7 +39,7 @@ git clone https://github.com/LuthfiMeteor/laravel-Ujikom-2023.git
 ```
 
 ### Download ZIP
-[Link](https://codeload.github.com/LuthfiMeteor/laravel-Ujikom-2023/zip/refs/heads/main)
+[Link](https://github.com/LuthfiMeteor/laravel-Ujikom-2023/archive/refs/heads/main.zip)
 
 ### Setup Aplikasi
 Jalankan perintah 
