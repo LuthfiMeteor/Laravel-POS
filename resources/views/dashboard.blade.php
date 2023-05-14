@@ -2,6 +2,7 @@
 
 @section('content')
 
+  @if (Auth::user()->level == '1')
   <div class="row">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
@@ -149,6 +150,9 @@
       </div>
     </div>
   </div>
+  @else
+      <h1 class="fs-1">SELAMAT DATANG KASIR {{ auth::user()->name }}</h1>
+  @endif
 
 @endsection
 @push('dashboard')
