@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.app', function ($view) {
             $view->with('setting', Setting::first());
         });
+        view()->composer('dashboard', function ($view) {
+            $view->with('setting', Setting::first());
+        });
     }
 
     /**

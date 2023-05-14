@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Models\Pembeliandetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\MemberController;
@@ -14,9 +16,12 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\PembeliandetailController;
 use App\Http\Controllers\PenjualanDetailController;
 
 /*
@@ -33,10 +38,7 @@ use App\Http\Controllers\PenjualanDetailController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 	Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
 	Route::post('/produk/delete-selected', [ProdukController::class, 'deleteSelected'])->name('produk.delete_selected');
@@ -54,9 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/member/cetak-member', [MemberController::class, 'cetakMember'])->name('member.cetak_member');
 	Route::resource('/member', MemberController::class);
 
-	Route::get('user-management', function () {
-		return view('laravel-examples/user-management');
-	})->name('user-management');
+	Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
+	Route::resource('/user', UserController::class);
 
 	Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
 	Route::resource('/supplier', SupplierController::class);
@@ -78,9 +79,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/pembelian', PembelianController::class)
 		->except('create');
 
-	Route::get('/pembelian_detail/{id}/data', [PembelianDetailController::class, 'data'])->name('pembelian_detail.data');
-	Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
-	Route::resource('/pembelian_detail', PembelianDetailController::class)
+	Route::get('/pembelian_detail/{id}/data', [PembeliandetailController::class, 'data'])->name('pembelian_detail.data');
+	Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembeliandetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
+	Route::resource('/pembelian_detail', PembeliandetailController::class)
 		->except('create', 'show', 'edit');
 
 	Route::get('/penjualan/data', [PenjualanController::class, 'data'])->name('penjualan.data');
