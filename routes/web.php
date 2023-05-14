@@ -37,6 +37,7 @@ use App\Http\Controllers\PenjualanDetailController;
 
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/', [HomeController::class, 'home']);
 
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -106,9 +107,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
-	Route::get('/login', function () {
-		return view('dashboard');
-	})->name('sign-up');
+	// Route::get('/login', function () {
+	// 	return view('dashboard');
+	// })->name('sign-up');
 });
 
 
