@@ -87,7 +87,13 @@ Menjalankan aplikasi
 ```bash
 php artisan serve
 ```
+```bash
+USERNAME ADMIN : admin@gmail.com
+PASSWORD ADMIN : 200512
 
+USERNAME KASIR : kasir1@gmail.com
+PASSWORD KASIR : 200512
+```
 ## License
 
 [MIT license](https://opensource.org/licenses/MIT)
